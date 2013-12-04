@@ -94,10 +94,10 @@ angular.module('parseResource', []).factory('$parseResource', ['PARSE_CONFIG', '
       return promiseThen(httpPromise, "queryCount");
     };
 
-    Resource.saveFile = function (filename, file) {
+    Resource.saveFile = function (filename, data, contentType) {
       var url = fileUrl + filename;
-      var headers = angular.extend({"Content-Type" : file.type}, defaultHeaders);
-      var httpPromise = $http.post(url, file, {params:defaultParams,headers:headers});
+      var headers = angular.extend({"Content-Type" : contentType.type}, defaultHeaders);
+      var httpPromise = $http.post(url, data, {params:defaultParams,headers:headers});
       return promiseThen(httpPromise, "get");
     };
 
