@@ -297,7 +297,7 @@ angular.module('parseResource', []).factory('$parseResource', ['PARSE_CONFIG', '
       return !('objectId' in this);
     }
 
-    Resource.prototype.$call  = function (functionName  , functionParams
+    Resource.prototype.$call  = function (functionName  , functionParams) {
       return Resource.call(functionName, functionParams);
     }
 
