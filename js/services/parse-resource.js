@@ -297,6 +297,10 @@ angular.module('parseResource', []).factory('$parseResource', ['PARSE_CONFIG', '
       return !('objectId' in this);
     }
 
+    Resource.prototype.$call  = function (functionName  , functionParams
+      return Resource.call(functionName, functionParams);
+    }
+
     Resource.prototype.$saveFile = function (fileName, data, contentType) {
       return Resource.saveFile(fileName, data, contentType);
     }
