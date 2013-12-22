@@ -116,8 +116,14 @@ angular.module('parseResource', []).factory('$parseResource', ['PARSE_CONFIG', '
       var httpPromise = $http.post(url, data, {params: defaultParams, headers: defaultHeaders});
       return promiseThen(httpPromise, "post", resource);
     }
-
-
+   // register a user (my addition)
+    Resource.update = function (data) {
+      var url = userUrl;
+      var resource = Resource.create(data);
+      data = angular.toJson(data);
+      var httpPromise = $http.put(url, data, {params: defaultParams, headers: defaultHeaders});
+      return promiseThen(httpPromise, "put", resource);
+    }
     // Call Cloud Code function
     Resource.call = function (functionName, functionParams) {
       var data = angular.isObject(functionParams)&&!angular.equals(functionParams,{}) ? functionParams : {};
