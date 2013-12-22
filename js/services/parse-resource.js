@@ -117,11 +117,14 @@ angular.module('parseResource', []).factory('$parseResource', ['PARSE_CONFIG', '
       return promiseThen(httpPromise, "post", resource);
     }
    // register a user (my addition)
-    Resource.update = function (data) {
+    Resource.update = function (id, data) {
+      if (id==undefined || id==null) {
+        throw "invalid id for get"
+      }
       var url = userUrl;
       var resource = Resource.create(data);
       data = angular.toJson(data);
-      var httpPromise = $http.put(url, data, {params: defaultParams, headers: defaultHeaders});
+      var httpPromise = $http.put(url + '/' + id, data, {params: defaultParams, headers: defaultHeaders});
       return promiseThen(httpPromise, "put", resource);
     }
     // Call Cloud Code function
